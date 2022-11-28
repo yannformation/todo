@@ -1,0 +1,14 @@
+<!-- //interpolation pour afficher directement les valeurs -->
+
+
+
+<li [class]="getItemVariant()">
+  <input placeholder="Veuillez entrer votre nom" type="text"[(ngModel)]="name">{{name}} is here
+  <span [class]="getBadgeVariant()">{{ getComplete()}} !!</span>
+
+  <button (click)="toggleComplete()"  mat-raised-button color="primary">{{getButtonText()}}</button>
+</li>
+
+<li *ngFor = "let l of List; trackBy:trackByFunction"></li>
+
+
