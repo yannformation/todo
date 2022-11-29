@@ -7,29 +7,28 @@ import { Task } from './class/task.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public count: number;
-  public tasks: Task[];
-  public percentage:number;
-
+  public count!: number;
+  public tasks!: Task[];
+  public percentage!: number;
 
   constructor() {
-    this.tasks = [
-      new Task(1, 'Acheter du pain', true, 'chez le boulanger',Date()),
-      new Task(2, "acheter de l'eau", true, 'chez lépicier',Date()),
-      new Task(3, 'acheter du beurre',false, 'à la crèmerie',Date()),
-      new Task(4, 'Faire le ménage', false, 'chambre et salon',Date()),
-    ];
-    this.count = this.tasks.filter((task) => task.completed).length;
+    new Promise(() =>
+      setTimeout(() => {
+        this.tasks = [
+          new Task(1, 'Acheter du pain', true, 'chez le boulanger', Date()),
+          new Task(2, "acheter de l'eau", true, "chez l'épicier", Date()),
+          new Task(3, 'acheter du beurre', false, 'à la crèmerie', Date()),
+          new Task(4, 'Faire le ménage', false, 'chambre et salon', Date()),
+        ];
+        this.count = this.tasks.filter((task) => task.completed).length;
 
-    this.percentage=(this.count/this.tasks.length)*100;
-  }
-
-
-
-
+        this.percentage = (this.count / this.tasks.length) * 100;
+      }, 300)
+    )
+  };
   changeCount(status: boolean): void {
     this.count = status ? this.count + 1 : this.count - 1;
-    this.percentage=(this.count/this.tasks.length)*100; //pour mettre àjour le pourcentage
+    this.percentage = (this.count / this.tasks.length) * 100; //pour mettre àjour le pourcentage
   }
 
   trackByFunction(index: number, item: any): string {
