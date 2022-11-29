@@ -1,19 +1,20 @@
-
 <ul *ngIf="count > 0; else noList">
   <app-task
-  *ngFor="let task of tasks; trackBy: trackByFunction"
-  [task]="task"
-  (message)="changeCount($event)"
+    *ngFor="let task of tasks; trackBy: trackByFunction"
+    [task]="task"
+    (message)="changeCount($event)"
   ></app-task>
 </ul>
-<ng-template #noList>Pas de tâches à effectuer pour le moment !</ng-template>
+<ng-template #noList>Pas de tâches à effectuer pour le moment ! 👍</ng-template>
 
-<div [ngSwitch]="true">
-
+<div [ngStyle]="{ fontWeight: 700, color: 'red' }" [ngSwitch]="true">
   <p *ngSwitchCase="percentage == 0"></p>
-  <p *ngSwitchCase="percentage >=1 && percentage <=51">les tâches sont en cours</p>
-  <p *ngSwitchCase="percentage >51 && percentage <=99">Vous avez bientôt fini !!</p>
+  <p *ngSwitchCase="percentage >= 1 && percentage <= 51">
+    Les tâches sont en cours {{ percentage | number: "2.1-2" }} % ⏳
+  </p>
+  <p *ngSwitchCase="percentage > 51 && percentage <= 99">
+    Vous avez bientôt fini !! {{ percentage | number: "2.1-2" }} % 🚀
+  </p>
   <p *ngSwitchDefault=""></p>
-
 </div>
-<p>Compteur {{ count }}</p>
+<p>Compteur {{ count }} / {{ tasks.length }}</p>
