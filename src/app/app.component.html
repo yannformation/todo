@@ -7,7 +7,7 @@
 </ul>
 <ng-template #noList>Pas de tâches à effectuer pour le moment ! 👍</ng-template>
 
-<div [ngStyle]="{ fontWeight: 700, color: 'red' }" [ngSwitch]="true">
+<div [ngStyle]="{ fontWeight: 700, color: 'red', 'font-size.px':18 }" [ngSwitch]="true">
   <p *ngSwitchCase="percentage == 0"></p>
   <p *ngSwitchCase="percentage >= 1 && percentage <= 51">
     Les tâches sont en cours {{ percentage | number: "2.1-2" }} % ⏳
@@ -17,4 +17,8 @@
   </p>
   <p *ngSwitchDefault=""></p>
 </div>
-<p>Compteur {{ count }} / {{ tasks.length }}</p>
+<p [ngStyle]="{fontWeight: 700, 'font-size.px':18}"
+    [ngClass]="{'text-success' :percentage==0,
+                'text-warning' : percentage >= 1 && percentage <= 51,
+                'text-danger' : percentage > 51 && percentage <= 99}">
+                Compteur {{ count }} / {{ tasks.length }}</p>
