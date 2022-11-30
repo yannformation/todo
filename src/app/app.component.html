@@ -1,6 +1,6 @@
 <ul *ngIf="count > 0; else noList">
   <app-task
-    *ngFor="let task of tasks; trackBy: trackByFunction"
+    *ngFor="let task of todo.tasks; trackBy: trackByFunction"
     [task]="task"
     (message)="changeCount($event)"
   ></app-task>
@@ -21,4 +21,4 @@
     [ngClass]="{'text-success' :percentage==0,
                 'text-warning' : percentage >= 1 && percentage <= 51,
                 'text-danger' : percentage > 51 && percentage <= 99}">
-                Compteur {{ count }} / {{ tasks.length }}</p>
+                Compteur {{ count }} / {{ todo.tasks.length }}</p>

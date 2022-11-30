@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Task } from './class/task.model';
+import { TodoListService } from './services/todo-list.service';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +12,15 @@ export class AppComponent {
   public tasks!: Task[];
   public percentage!: number;
 
-  constructor() {
+  constructor(public todo: TodoListService) {
     new Promise(() =>
       setTimeout(() => {
-        this.tasks = [
-          new Task(1, 'Acheter du pain', false, 'chez le boulanger', Date()),
-          new Task(2, "acheter de l'eau", true, "chez l'épicier", Date()),
-          new Task(3, 'acheter du beurre', false, 'à la crèmerie', Date()),
-          new Task(4, 'Faire le ménage', true, 'chambre et salon', Date()),
-        ];
-        this.count = this.tasks.filter((task) => task.completed).length;
 
-        this.percentage = (this.count / this.tasks.length) * 100;
-      }, 300)
+      }, 3000)
     )
+    this.count = this.tasks.filter((task) => task.completed).length;
+
+    this.percentage = (this.count / this.tasks.length) * 100;
   };
   changeCount(status: boolean): void {
     this.count = status ? this.count + 1 : this.count - 1;
