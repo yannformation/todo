@@ -1,7 +1,7 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from 'src/app/class/task.model';
-
+import { TodolistService } from 'src/app/services/todo-list.service';
 
 @Component({
   selector: 'app-task',
@@ -14,7 +14,7 @@ export class TaskComponent {
   @Output() public message: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   //attributions de valeurs aux propriétés
-  constructor() {}
+  constructor(public todo : TodolistService) {}
   getComplete(): string {
     return this.task.completed ? 'terminé' : 'en cours';
   }
@@ -33,9 +33,9 @@ export class TaskComponent {
   getButtonText(): string {
     return !this.task.completed ? 'TERMINER' : 'ANNULER';
   }
-
-  toggleComplete(): void {
-    this.task.completed = !this.task.completed;
+//appelé à partir de todolistService
+  toggleComplete(): void{
+   this.todo.toggleComplete(this.task.id);//paramètre de toogleComplete récupéré dans task.model.
   }
   send(): void {
     this.toggleComplete();
