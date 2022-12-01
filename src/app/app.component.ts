@@ -17,11 +17,11 @@ export class AppComponent {
     // this.percentage = (this.count / this.todoList.tasks?.length) * 100;
   };
   public get count(): number {
-    return (this.todoList.tasks?.length > 0) ? this.todoList.tasks?.filter(task => task.completed).length : 0;
+    return (this.todoList.tasks?.length > 0) ? this.todoList.tasks?.filter(task => !task.completed).length : 0;
   }
 
   public get percentage(): number {
-    return (this.todoList.tasks?.length > 0) ? (this.count / this.todoList.tasks?.length)*100 : 0;
+    return (this.todoList.tasks?.length > 0) ? (100-((this.count/this.todoList.tasks?.length)*100)) : 0;
   }
 
   // changeCount(status: boolean): void {

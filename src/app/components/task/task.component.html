@@ -1,7 +1,7 @@
 <!-- //interpolation pour afficher directement les valeurs -->
 
 <li [class]="getItemVariant()">
-  {{task.id}}°)  {{task.date| date:'d MMM Y HH:mm' :'fr'}}<input [(ngModel)]="task.title" />{{ task.title }} is here {{task.description}}
+  {{task.id + 1}}°)  {{task.date| date:'d MMM Y HH:mm' :'fr'}}<input [(ngModel)]="task.title" />{{ task.title }} is here {{task.description}}
   <span [class]="getBadgeVariant()">{{ getComplete() }} !!</span>
 
   <button (click)="send()" mat-raised-button color="primary">
