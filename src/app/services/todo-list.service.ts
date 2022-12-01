@@ -17,6 +17,7 @@ export class TodolistService {
   constructor() {
    this.updateList(initialList);
   }
+
   updateList(list: Task[]): void {
     new Promise<Task[]>(() => {
       setTimeout(() => {
@@ -24,5 +25,8 @@ export class TodolistService {
         this.tasks = list;
       }, 1000);
     });
+  }
+  toggleComplete(index: number): void {
+    this.tasks[index].completed = !this.tasks[index].completed;
   }
 }
