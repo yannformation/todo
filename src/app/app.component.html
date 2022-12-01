@@ -1,10 +1,17 @@
-<ul *ngIf="count > 0; else noList">
-  <app-task
-    *ngFor="let task of todoList.tasks; trackBy: trackByFunction"
-    [task]="task"
-    (message)="changeCount($event)"
-  ></app-task>
-</ul>
+<div *ngIf="count > 0; else noList">
+  <ul>
+    <app-task
+      *ngFor="let task of todoList.tasks; trackBy: trackByFunction"
+      [task]="task"
+
+    ></app-task>
+  </ul>
+  <p [ngStyle]="{fontWeight: 700, 'font-size.px':18}"
+      [ngClass]="{'text-success' :percentage==0,
+                  'text-warning' : percentage >= 1 && percentage <= 51,
+                  'text-danger' : percentage > 51 && percentage <= 99}">
+                  Compteur {{ count }} / {{ todoList.tasks.length }}</p>
+</div>
 <ng-template #noList>Pas de tâches à effectuer pour le moment ! 👍</ng-template>
 
 <div [ngStyle]="{ fontWeight: 700, color: 'red', 'font-size.px':18 }" [ngSwitch]="true">
@@ -15,10 +22,5 @@
   <p *ngSwitchCase="percentage > 51 && percentage <= 99">
     Vous avez bientôt fini !! {{ percentage | number: "2.1-2" }} % 🚀
   </p>
-  <p *ngSwitchDefault=""></p>
+  <!-- <p *ngSwitchDefault=""></p> -->
 </div>
-<p [ngStyle]="{fontWeight: 700, 'font-size.px':18}"
-    [ngClass]="{'text-success' :percentage==0,
-                'text-warning' : percentage >= 1 && percentage <= 51,
-                'text-danger' : percentage > 51 && percentage <= 99}">
-                Compteur {{ count }} / {{ todoList.tasks.length }}</p>
