@@ -11,6 +11,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { RouterOutlet } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     NavComponent,
     LoginComponent,
     LogoutComponent
+
   ],
   imports: [
     BrowserModule,
@@ -32,4 +34,6 @@ import { LogoutComponent } from './components/logout/logout.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
