@@ -1,0 +1,17 @@
+<!-- <br><p></p><br/>
+<div>
+  <p>
+    {{ task!.id +1 }} : {{ task?.title }} : {{ task?.completed }}
+  </p>
+  <p>{{task?.description}}</p>
+  <p>{{ task?.date | date:'d MMM Y HH:mm' :'fr' }}</p>
+</div> -->
+
+<mat-card >
+  <mat-card-title>Details :</mat-card-title>
+  <mat-card-content> {{ task!.id +1 }} : {{ task?.title }} : {{ task?.completed }}</mat-card-content>
+  <mat-card-content>{{task?.description}}</mat-card-content>
+  <mat-card-content>{{ task?.date | date:'d MMM Y HH:mm' :'fr' }}</mat-card-content>
+
+
+</mat-card>
