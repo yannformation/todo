@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '../class/task.model';
 
 const initialList: Task[] = [
@@ -12,17 +13,26 @@ const initialList: Task[] = [
   providedIn: 'root',
 })
 export class TodolistService {
-  public tasks!: Task[];
+  private tasks!: Task[];
+  private _tasks = new BehaviorSubject<Task[]>([]);
+  readonly tasks$ = this._tasks.asObservable();
 
   constructor() {
-   this.updateList(initialList);
+    this.tasks = [];
+    this.updateList(initialList);
+    this.emiter(this.tasks);
+  }
+
+  public getTasks(): Observable<Task[]> {
+    return this.tasks$;
   }
 
   updateList(list: Task[]): void {
     new Promise<Task[]>(() => {
       setTimeout(() => {
-
         this.tasks = list;
+
+        this.emiter(this.tasks);
       }, 1000);
     });
   }
@@ -35,11 +45,14 @@ export class TodolistService {
     //     return task;
     // }
     // return null;
-    return this.tasks.filter(task => task.id == id)[0];
+    return this.tasks.filter((task) => task.id == id)[0];
   }
 
   // public getList(list: Task[]): any{
   //   return this.updateList
 
   // }
+  private emiter(tasks: Task[]): void {
+    this._tasks.next(Object.assign([], tasks));
+  }
 }

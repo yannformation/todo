@@ -3,7 +3,7 @@
 <li [class]="getItemVariant()">
   {{task.id + 1}}°)  {{task.date| date:'d MMM Y HH:mm' :'fr'}}<input [(ngModel)]="task.title" />{{ task.title }} is here {{task.description}}
   <span [class]="getBadgeVariant()">{{ getComplete() }} !!</span>
-</li>
+
 
   <a [routerLink]="['/todolist', task.id]" routerLinkActive="active"
   [routerLinkActiveOptions]="{exact: true}">
@@ -17,7 +17,10 @@
     <p>{{ task.date | date:'d MMM Y HH:mm' :'fr' }}</p>
   </div>
 
+</a>
+
   <button (click)="send()" mat-raised-button color="primary">
     {{ getButtonText() }}
   </button>
+</li>
 
