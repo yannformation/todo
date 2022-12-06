@@ -1,0 +1,28 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.card{
+  width: 30%;
+}
+
+.card-header, .card-footer{
+  font-weight: bold;
+}
+.text-center{
+  margin: 0 auto;
+}
+
+.card-body{
+  font-size: 1.2rem;
+  background-color: aquamarine;
+  color: white;
+  height: 12.5rem;
+}
+.card-title{
+  font-size: 1.2rem;
+}

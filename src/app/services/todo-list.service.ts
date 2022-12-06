@@ -37,4 +37,9 @@ export class TodolistService {
     // return null;
     return this.tasks.filter(task => task.id == id)[0];
   }
+
+  // public getList(list: Task[]): any{
+  //   return this.updateList
+
+  // }
 }
