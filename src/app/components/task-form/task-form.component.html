@@ -1,0 +1,13 @@
+
+<form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+  <input type="text" name="title" placeholder="Titre de la tâche" ngModel required>
+  <input type="text" name="description" placeholder="Description" ngModel required>
+  <select name="complete" id="complete"  ngModel required >
+    <option name="Choix" value="" selected>Veuillez sélectionner un état</option>
+    <option name="En Cours" value="En Cours">En Cours</option>
+    <option name="terminé" value="Terminé">Terminé</option>
+  </select>
+    <button type="submit" name="submit" [disabled]="!taskForm.valid">Valider</button>
+
+</form>
+

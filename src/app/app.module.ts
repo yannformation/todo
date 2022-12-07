@@ -15,6 +15,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { RouterOutlet } from '@angular/router';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     LogoutComponent,
     TaskDetailsComponent,
     NotFoundComponent,
+    TaskFormComponent,
 
   ],
   imports: [

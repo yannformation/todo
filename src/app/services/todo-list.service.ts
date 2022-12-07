@@ -55,4 +55,14 @@ export class TodolistService {
   private emiter(tasks: Task[]): void {
     this._tasks.next(Object.assign([], tasks));
   }
-}
+//ajouter une tâche via le formulaire
+  public addTask(task: Task): void{
+    this.tasks.push(task);
+    this.emiter(this.tasks);
+  }
+//obtenir l'id de la dernière tâche créée
+  // public getLastId(id: number): Task | number  {
+  //  return this.tasks[id] =Task.length-1;
+  //     }
+  }
+
