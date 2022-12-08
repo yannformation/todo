@@ -48,10 +48,6 @@ export class TodolistService {
     return this.tasks.filter((task) => task.id == id)[0];
   }
 
-  // public getList(list: Task[]): any{
-  //   return this.updateList
-
-  // }
   private emiter(tasks: Task[]): void {
     this._tasks.next(Object.assign([], tasks));
   }
@@ -60,9 +56,6 @@ export class TodolistService {
     this.tasks.push(task);
     this.emiter(this.tasks);
   }
-//obtenir l'id de la dernière tâche créée
-  // public getLastId(id: number): Task | number  {
-  //  return this.tasks[id] =Task.length-1;
-  //     }
+
   }
 

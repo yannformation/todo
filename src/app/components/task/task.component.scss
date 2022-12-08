@@ -22,8 +22,14 @@ input{
   color: black;
 
 }
-ul li{
+li a{
   text-decoration: none;
+  color: black;
+
+}
+div{
+  display: flex;
+  justify-content: space-around;
 }
 
 
