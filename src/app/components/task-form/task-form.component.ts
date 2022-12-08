@@ -34,6 +34,14 @@ export class TaskFormComponent {
     this.router.navigate(['todolist'])
   }
 
+  //beaucoup mieux que ci-dessus
+  // onSubmit(userform: NgForm): void {
+  //   this.todo.addTask(
+  //     new Task(userform.value.title, (userform.value.completed == 0) ? false : true, userform.value.description, new Date())
+  //   );
+  //   this.router.navigate(['todolist']);
+  // }
+
 
 
 

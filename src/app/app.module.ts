@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
@@ -36,7 +37,8 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

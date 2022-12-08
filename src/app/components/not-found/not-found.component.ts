@@ -12,4 +12,6 @@ export class NotFoundComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  imageNotFound:any = "../assets/images/404Robot.webp";
+
 }
