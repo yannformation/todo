@@ -1,0 +1,7 @@
+<ul>
+  <app-task
+    *ngFor="let user of users; trackBy: trackByFunction"
+    [user]="user"
+
+  ></app-task>
+</ul>

@@ -17,6 +17,7 @@ import { RouterOutlet } from '@angular/router';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     TaskDetailsComponent,
     NotFoundComponent,
     TaskFormComponent,
+    UserListComponent
 
   ],
   imports: [
