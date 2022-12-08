@@ -23,7 +23,7 @@ export class TaskFormComponent {
     this.task = this.todo.getTaskById(id);
   }
 
-//pour valider le formulaire d'ajout de tâches
+//pour valider le formulaire et ajouter des tâches
   onSubmit(taskForm: NgForm){
     let title = taskForm.value.title;
     let description = taskForm.value.description;
