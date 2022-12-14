@@ -1,7 +1,8 @@
-<ul>
-  <app-task
-    *ngFor="let user of users; trackBy: trackByFunction"
-    [user]="user"
-
-  ></app-task>
-</ul>
+<div>
+  <ul *ngFor="let user of users; trackBy: trackByFunction">
+    <li>
+      {{ user.firstName }} {{ user.lastName }} {{ user.email }} {{ user.team }}
+      {{ user.skills }}
+    </li>
+  </ul>
+</div>

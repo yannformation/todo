@@ -18,6 +18,7 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { UserListComponent } from './components/user-list/user-list.component';
     TaskDetailsComponent,
     NotFoundComponent,
     TaskFormComponent,
-    UserListComponent
+    UserListComponent,
+    UserFormComponent
+
 
   ],
   imports: [

@@ -1,0 +1,20 @@
+<div class="card text-center">
+    <div class="card-header">Création d'un utilisateur
+    </div>
+    <div class="card-body">
+    <form (ngSubmit)="onSubmit(userForm)" [formGroup]="userForm">
+      <input type="text" name="firstName" placeholder="Votre prénom" [formControl]="firstName">
+      <input type="text" name="lastName" placeholder="Votre nom" [formControl]="lastName">
+      <input type="email" name="email" placeholder="Votre email" [formControl]="email">
+      <!-- <select name="team" id="team" [formControl]="team" >
+
+      </select>
+      <select name="skills" id="skills" [formControl]="skills" >
+
+      </select> -->
+
+        <button type="submit" name="submit" [disabled]="!userForm.valid">Valider</button> <!-- [disabled]="!taskForm.valid" pour bloquer bouton en cas de formulaire mal complété -->
+
+      </form>
+    </div>
+</div>
