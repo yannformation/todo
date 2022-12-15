@@ -13,9 +13,7 @@ export class UserListComponent implements OnInit, OnDestroy{
   private users$! : Observable<User[]>;
   public subscribe!: Subscription;
 
-  constructor(public userList: UserService) {
-
-  };
+  constructor(public userList: UserService) {}
 
   ngOnInit(): void{
     this.users$ = this.userList.getUsers();
@@ -26,18 +24,14 @@ export class UserListComponent implements OnInit, OnDestroy{
     this.subscribe?.unsubscribe
   }
 
-
-
-
   trackByFunction(index: number, item: any): string {
     return item.id;
   }
+
   getUsers(): void{
     this.subscribe = this.users$.subscribe(users => {
       this.users = users;
     })
-
   }
-
 
  }

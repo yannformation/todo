@@ -6,15 +6,24 @@
       <input type="text" name="firstName" placeholder="Votre prénom" [formControl]="firstName">
       <input type="text" name="lastName" placeholder="Votre nom" [formControl]="lastName">
       <input type="email" name="email" placeholder="Votre email" [formControl]="email">
-      <!-- <select name="team" id="team" [formControl]="team" >
 
+      <select name="team" id="team" [formControl]="team" >
+      <option name="Choix" value="" selected>Veuillez sélectionner une équipe</option>
+      <option name="Cacahuète" value="Cacahuète">Cacahuète</option>
+      <option name="Banane" value="Banane">Banane</option>
+      <option name="Abricot" value="Abricot">Abricot</option>
       </select>
-      <select name="skills" id="skills" [formControl]="skills" >
 
-      </select> -->
+      <ng-container  formArrayName="skills">
+        <ng-container *ngFor="let skill of skills.controls; let i = index; trackBy: trackByFunction">
+          <label>id : {{ i }}</label>
+          <input placeholder="Compétence ou talent" [formControlName]="i " type="text" >
+          <button type="button" mat-raised-button color="warn" (click)="removeSkill(i)">Supprimer</button>
+        </ng-container>
+      </ng-container>
+      <button mat-raised-button color="success" type="button" (click)="addSkill()">Ajouter une compétence</button>
 
-        <button type="submit" name="submit" [disabled]="!userForm.valid">Valider</button> <!-- [disabled]="!taskForm.valid" pour bloquer bouton en cas de formulaire mal complété -->
-
-      </form>
-    </div>
+      <button type="submit" name="submit" [disabled]="!userForm.valid">Valider</button> <!-- [disabled]="!userForm.valid" pour bloquer bouton en cas de formulaire mal complété -->
+    </form>
+  </div>
 </div>
