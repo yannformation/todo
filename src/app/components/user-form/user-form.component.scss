@@ -21,6 +21,14 @@ body{
     box-shadow: 4px 4px 16px 5px rgba(97,97,97,0.61);
   }
 
+  input.ng-invalid.ng-touched {
+    border: 3px solid red;
+  }
+
+  input.ng-valid.ng-touched {
+    border: 3px solid rgb(68, 255, 0);
+  }
+
   .card-header{
     font-weight: bold;
     font-size: 1.5rem;
@@ -36,4 +44,8 @@ body{
   .card-body{
     background-color: rgb(98, 246, 248);
 
+  }
+
+  form p{
+    color: red;
   }

@@ -1,0 +1,27 @@
+.container{
+  display: inline-flexbox;
+  justify-content:space-around;
+border: 1px solid red;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.card{
+  width: 25%;
+  margin: 1.5rem;
+  border-radius: 15px;
+  border: 3px solid rgb(255, 166, 0);
+  box-shadow: 10px 2px 7px 4px rgba(227,224,227,1);
+}
+
+
+ul li{
+
+  list-style-type: none;
+  justify-content: center;
+}
+
+.card-body{
+  background-color: pink;
+}
+

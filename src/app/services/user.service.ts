@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable} from 'rxjs';
 import { User } from '../class/user.model'
 
 const userList: User[] = [
-  new User('Jean ', 'Dupont ', 'jean.dupont@cacahuete.fr ','coque ',["généreux "])
+  new User('Jean ', 'Dupont ', 32, 'jean.dupont@cacahuete.fr ', 'jeandupont', 'jean123@', 'coque ',["généreux "])
 ];
 
 @Injectable({
@@ -45,4 +45,8 @@ export class UserService {
     this.users.push(user);
     this.emiterUsers(this.users);
   }
+//pour vérifier si le userName existe déjà
+  public isUserNameAvailable(name: string):boolean{
+ return (this.users.filter(user => user.userName === name).length >0) ? false : true;
+}
 }

@@ -1,8 +1,42 @@
-<div>
-  <ul *ngFor="let user of users; trackBy: trackByFunction">
-    <li>
-      {{ user.firstName }} {{ user.lastName }} {{ user.email }} {{ user.team }}
-      {{ user.skills }}
-    </li>
-  </ul>
+<div class="container" >
+  <div class="card text-center" *ngFor="let user of users; trackBy: trackByFunction">
+    <div class="card-header">Détails Utilisateur</div>
+    <div class="card-body">
+      <div>
+        <ul >
+          <li>
+            <p>Firstname: {{ user.firstName }}</p>
+          </li>
+          <li>
+            <p>Lastname: {{ user.lastName }}</p>
+          </li>
+          <li>
+            <p>age: {{ user.age }} ans</p>
+          </li>
+          <li>
+            <p>Email: {{ user.email }}</p>
+          </li>
+          <li>
+            <p>userName: {{ user.userName }}</p>
+          </li>
+          <li>
+            <p>password: {{ user.password }}</p>
+          </li>
+          <li>
+            <p>Team: {{ user.team }}</p>
+          </li>
+          <li><p>Skills:</p></li>
+          <ul
+            *ngFor="
+              let skill of user.skills;
+              let i = index;
+              trackBy: trackByFunction
+            "
+          >
+            <li>{{ i }} : {{ skill }}</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

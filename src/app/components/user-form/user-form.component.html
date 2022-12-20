@@ -1,29 +1,167 @@
 <div class="card text-center">
-    <div class="card-header">Création d'un utilisateur
-    </div>
-    <div class="card-body">
+  <div class="card-header">Création d'un utilisateur</div>
+  <div class="card-body">
     <form (ngSubmit)="onSubmit(userForm)" [formGroup]="userForm">
-      <input type="text" name="firstName" placeholder="Votre prénom" [formControl]="firstName">
-      <input type="text" name="lastName" placeholder="Votre nom" [formControl]="lastName">
-      <input type="email" name="email" placeholder="Votre email" [formControl]="email">
+      <input
+        type="text"
+        name="firstName"
+        placeholder="Votre prénom"
+        [formControl]="firstName"
+      />
+      <p
+        *ngIf="
+          firstName?.dirty &&
+          (firstName?.hasError('minlength') || firstName?.hasError('maxlength'))
+        "
+      >
+        Firstname must be between 3 and 20 characters.
+      </p>
+      <p *ngIf="firstName?.dirty && firstName?.hasError('required')">
+        Firstname is required
+      </p>
 
-      <select name="team" id="team" [formControl]="team" >
-      <option name="Choix" value="" selected>Veuillez sélectionner une équipe</option>
-      <option name="Cacahuète" value="Cacahuète">Cacahuète</option>
-      <option name="Banane" value="Banane">Banane</option>
-      <option name="Abricot" value="Abricot">Abricot</option>
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Votre nom"
+        [formControl]="lastName"
+      />
+      <p *ngIf="lastName?.dirty && lastName?.hasError('required')">
+        LastName is required.
+      </p>
+      <p
+        *ngIf="
+          lastName?.dirty &&
+          (lastName?.hasError('minlength') || lastName?.hasError('maxlength'))
+        "
+      >
+        LastName must be between 3 and 20 characters.
+      </p>
+
+      <input
+        type="number"
+        name="age"
+        placeholder="Votre âge"
+        [formControl]="age"
+      />
+      <p *ngIf="age?.dirty && age?.hasError('required')">Age is required.</p>
+      <p *ngIf="age?.dirty && (age?.hasError('min') || age?.hasError('max'))">
+        Age must be between 65 and 99
+      </p>
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Votre email"
+        [formControl]="email"
+      />
+      <p *ngIf="email?.dirty && email?.hasError('required')">
+        Email is required.
+      </p>
+      <p *ngIf="email?.dirty && email?.hasError('email')">
+        The email must be correctly formatted.\n Ex: Jeandu13@live.fr
+      </p>
+
+      <input
+        type="text"
+        name="userName"
+        placeholder="Votre nom utilisateur"
+        [formControl]="userNameControl"
+      />
+      <p *ngIf="userNameControl?.dirty && userNameControl?.hasError('required')">
+        LastName is required.
+      </p>
+      <p
+        *ngIf="
+          userNameControl?.dirty &&
+          (userNameControl?.hasError('minlength') || userNameControl?.hasError('maxlength'))
+        "
+      >
+        LastName must be between 3 and 20 characters.
+      </p>
+      <span *ngIf="userNameControl.hasError('alreadyUsed') && userNameControl.touched">This username already exist</span>
+
+      <div [formGroup]="passwordForm">
+        <input
+          type="password"
+          name="passwordCtrl"
+          placeholder="Mot de passe"
+          formControlName="passwordCtrl"
+        />
+        <div>Strength: {{ passwordStrength }}</div>
+        <p *ngIf="passwordCtrl?.dirty && passwordCtrl?.hasError('required')">
+          Password is required.
+        </p>
+        <p
+          *ngIf="passwordCtrl?.dirty && (passwordCtrl?.hasError('minlength') || passwordCtrl?.hasError('maxlength'))"
+        >
+          Password must be between 8 and 20 characters.
+        </p>
+
+        <input
+          type="password"
+          name="confirmCtrl"
+          placeholder="Confirmer le Mot de passe"
+          formControlName="confirmCtrl"
+        />
+        <p *ngIf="confirmCtrl?.dirty && confirmCtrl?.hasError('required')">
+          Confirm your password
+        </p>
+        <p *ngIf="passwordForm.hasError('matchingError')">
+          Your password does not match
+        </p>
+      </div>
+
+      <select name="team" id="team" [formControl]="team">
+        <p *ngIf="team?.dirty && team?.hasError('required')">Select a team.</p>
+
+        <option name="Choix" value="" selected>
+          Veuillez sélectionner une équipe
+        </option>
+        <option name="Cacahuète" value="Cacahuète">Cacahuète</option>
+        <option name="Banane" value="Banane">Banane</option>
+        <option name="Abricot" value="Abricot">Abricot</option>
       </select>
 
-      <ng-container  formArrayName="skills">
-        <ng-container *ngFor="let skill of skills.controls; let i = index; trackBy: trackByFunction">
+      <ng-container formArrayName="skills">
+        <ng-container
+          *ngFor="
+            let skill of skills.controls;
+            let i = index;
+            trackBy: trackByFunction
+          "
+        >
           <label>id : {{ i }}</label>
-          <input placeholder="Compétence ou talent" [formControlName]="i " type="text" >
-          <button type="button" mat-raised-button color="warn" (click)="removeSkill(i)">Supprimer</button>
+          <input
+            placeholder="Compétence ou talent"
+            [formControlName]="i"
+            [value]="skill.value"
+            type="text"
+          />
+          <button
+            type="button"
+            mat-raised-button
+            color="warn"
+            (click)="removeSkill(i)"
+          >
+            Supprimer
+          </button>
         </ng-container>
       </ng-container>
-      <button mat-raised-button color="success" type="button" (click)="addSkill()">Ajouter une compétence</button>
+      <button
+        mat-raised-button
+        color="success"
+        type="button"
+        (click)="addSkill()"
+      >
+        Ajouter une compétence
+      </button>
 
-      <button type="submit" name="submit" [disabled]="!userForm.valid">Valider</button> <!-- [disabled]="!userForm.valid" pour bloquer bouton en cas de formulaire mal complété -->
+      <button type="submit" name="submit" [disabled]="!userForm.valid">
+        Valider
+      </button>
+      <!-- [disabled]="!userForm.valid" pour bloquer bouton en cas de formulaire mal complété -->
     </form>
+    <button mat-raised-button type="button" color="primary" (click)="printLog()"></button>
   </div>
 </div>
