@@ -27,6 +27,7 @@ export class UserFormComponent implements OnInit{
   public team: FormControl;
   public skills!: FormArray;
   public passwordStrength = 0;
+  public birthdateCtrl: FormControl;
 
   static passwordMatch(group: FormGroup) {
     const password = group.get('passwordCtrl')?.value;
@@ -34,6 +35,13 @@ export class UserFormComponent implements OnInit{
     return password === confirm ? null : { matchingError: true };
 
   }
+
+  static isOldEnougth(control: FormControl){
+    const birthDatePlus18 = new Date(control.value);
+    birthDatePlus18.setFullYear(birthDatePlus18.getFullYear() +18);
+    return birthDatePlus18 < new Date() ? null : { tooYoung: true };
+  }
+
   constructor ( private fb: FormBuilder, public form:UserService, public userService:UserService, private router: Router){
     this.user = null;
     this.firstName = this.fb.control('', [
@@ -68,6 +76,8 @@ export class UserFormComponent implements OnInit{
 
     });
 
+    this.birthdateCtrl = this.fb.control('', [Validators.required, UserFormComponent.isOldEnougth])
+
     this.passwordCtrl.valueChanges
     .pipe(debounceTime(400))
     .pipe(distinctUntilChanged())
@@ -87,7 +97,10 @@ export class UserFormComponent implements OnInit{
       userNameControl: this.userNameControl,
       team: this.team,
       skills: this.skills,
-      passwordForm: this.passwordForm
+      passwordForm: this.passwordForm,
+      birthdate: this.birthdateCtrl,
+    },{
+      updateOn: 'blur'
     });
   }
   public isUserNameAvailable(control: AbstractControl){

@@ -49,6 +49,15 @@
         Age must be between 65 and 99
       </p>
 
+      <div>
+        <input type="date" name="birthdate" placeholder="Votre date de naissance" formControlName="birthdate">
+        <div *ngIf="birthdateCtrl.dirty">
+          <div *gnIf="birthdateCtrl.hasError('required')">Birth date is required</div>
+          <div *ngIf="birthdateCtrl.hasError('tooYoung')">You're way too young</div>
+        </div>
+      </div>
+
+
       <input
         type="email"
         name="email"
@@ -162,6 +171,6 @@
       </button>
       <!-- [disabled]="!userForm.valid" pour bloquer bouton en cas de formulaire mal complété -->
     </form>
-    <button mat-raised-button type="button" color="primary" (click)="printLog()"></button>
+    <!-- <button mat-raised-button type="button" color="primary" (click)="printLog()"></button> -->
   </div>
 </div>
