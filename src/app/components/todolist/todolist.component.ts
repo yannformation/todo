@@ -3,7 +3,6 @@ import { Observable, Subscription } from 'rxjs';
 import { Task } from 'src/app/class/task.model';
 import { TodolistService } from 'src/app/services/todo-list.service';
 
-
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -11,7 +10,7 @@ import { TodolistService } from 'src/app/services/todo-list.service';
 })
 export class TodolistComponent implements OnInit, OnDestroy{
   public tasks: Task[] = [];
-  private tasks$! : Observable<Task[]>;
+  public tasks$! : Observable<Task[]>;
   public subscribe!: Subscription;
 
   constructor(public todoList: TodolistService) {
@@ -20,6 +19,8 @@ export class TodolistComponent implements OnInit, OnDestroy{
   };
 
   ngOnInit(): void{
+    // this.todoList.save();//appel de la méthode save() pour effectuer l'envoi des données task vers firebase
+    this.todoList.load();
     this.tasks$ = this.todoList.getTasks();
     this.getTasks();
   }
@@ -49,6 +50,8 @@ export class TodolistComponent implements OnInit, OnDestroy{
     })
 
   }
+
+
 
 
 }

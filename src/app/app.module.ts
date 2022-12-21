@@ -6,6 +6,7 @@ import { MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
@@ -43,7 +44,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     MatButtonModule,
     FormsModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [],

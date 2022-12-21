@@ -5,7 +5,7 @@ export class Task {
     public title: string,
     public completed: boolean,
     public description: string,
-    public date: string
+    public date: Date
   ) {
     this.id = Task.index++;
     this.title = title;
