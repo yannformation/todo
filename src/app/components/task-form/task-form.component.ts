@@ -25,11 +25,12 @@ export class TaskFormComponent {
 
 //pour valider le formulaire et ajouter des tâches
   onSubmit(taskForm: NgForm){
+    let id =taskForm.value.id
     let title = taskForm.value.title;
     let description = taskForm.value.description;
     let completed = taskForm.value.completed;
     let date = new Date();
-    let task =new Task(title, completed, description, date);
+    let task =new Task(this.todo.tasks.length, title, completed, description, date);
     this.todo.addTask(task);
     this.router.navigate(['todolist'])
   }

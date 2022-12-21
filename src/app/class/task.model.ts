@@ -1,13 +1,13 @@
 export class Task {
   private static index : number = 0;
-  public id: number;
   constructor(
+    public id: number,
     public title: string,
     public completed: boolean,
     public description: string,
     public date: Date
   ) {
-    this.id = Task.index++;
+    this.id = id;
     this.title = title;
     this.completed = completed;
     this.description = description;
